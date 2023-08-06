@@ -2,18 +2,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AccountBookService.Models
 {
-    public class Account
+    public class Income
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
-        public string AccountName { get; set; }
+        public string Description { get; set; }
 
         [Required]
-        public User AccountHolder { get; set; }
+        public decimal Amount { get; set; }
 
-        public decimal Balance { get; set; }
+        public IncomeCategory? Category { get; set; }
 
         public DateTime CreatedTime { get; set; }
 
@@ -22,4 +22,14 @@ namespace AccountBookService.Models
         [Timestamp]
         public byte[] Version { get; set; }
     }
+
+    public enum IncomeCategory
+    {
+        Salary,
+        Rent,
+        Bonuses,
+        Investments,
+        Other
+    }
 }
+
